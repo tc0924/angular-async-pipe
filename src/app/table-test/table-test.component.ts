@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 export type PeriodicElement = {
   name: string;
@@ -27,6 +27,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./table-test.component.scss']
 })
 export class TableTestComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['No', 'Nombre', 'Símbolo', 'Peso'];
   dataSource = ELEMENT_DATA;
 }
