@@ -28,5 +28,5 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TableTestComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSouce = ELEMENT_DATA;
+  dataSource = ELEMENT_DATA;
 }
