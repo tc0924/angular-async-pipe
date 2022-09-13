@@ -23,7 +23,9 @@
     <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
   </ng-container>
 
+<!--  header の表示-->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<!--  body の表示-->
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
 </table>
