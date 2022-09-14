@@ -1,5 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { RandomUserService } from './random-user.service';
+import { RandomUserInfo } from "../assets/user-info";
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { RandomUserService } from './random-user.service';
 })
 export class AppComponent implements AfterViewInit {
   title = 'angular-async-pipe';
+  randomUsers: RandomUserInfo[] = [];
 
   constructor(private randomUserService: RandomUserService) {}
 
@@ -16,8 +19,18 @@ export class AppComponent implements AfterViewInit {
   }
 
   getUsers(){
-    this.randomUserService.getRandomUsers().subscribe((data:any) => {
-      console.log(data);
+    this.randomUserService.getRandomUsers().subscribe((val:any) => {
+      const dataSet:any = val["results"];
+      dataSet.map((data: any) => {
+        this.randomUsers.push({
+          name: data["name"]["first"] + " " + data["name"]["last"],
+          country: data["location"]["country"],
+          email: data["email"],
+          age: data["dob"]["age"],
+          picture: data["picture"]["thumbnail"]
+        });
+      });
+      console.log(this.randomUsers);
     })
   }
 }
