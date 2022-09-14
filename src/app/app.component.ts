@@ -1,6 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core';
+import {Component, AfterViewInit, ViewChild } from '@angular/core';
 import { RandomUserService } from './random-user.service';
 import { RandomUserInfo } from "../assets/user-info";
+import { TableTestComponent } from "./table-test/table-test.component";
 
 
 @Component({
@@ -9,6 +10,7 @@ import { RandomUserInfo } from "../assets/user-info";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
+  @ViewChild(TableTestComponent) tableComponent!: TableTestComponent;
   title = 'angular-async-pipe';
   randomUsers: RandomUserInfo[] = [];
 
@@ -30,7 +32,8 @@ export class AppComponent implements AfterViewInit {
           picture: data["picture"]["thumbnail"]
         });
       });
-      console.log(this.randomUsers);
+      this.tableComponent.render();
+      // console.log(this.randomUsers);
     })
   }
 }

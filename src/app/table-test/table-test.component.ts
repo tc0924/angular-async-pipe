@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { PeriodicElement, ELEMENT_DATA } from '../../assets/element-data';
+import { Component, Input, ViewChild } from '@angular/core';
+import { RandomUserInfo } from "../../assets/user-info";
+import {MatTable} from "@angular/material/table";
 
 @Component({
   selector: 'app-table-test',
@@ -7,6 +8,11 @@ import { PeriodicElement, ELEMENT_DATA } from '../../assets/element-data';
   styleUrls: ['./table-test.component.scss']
 })
 export class TableTestComponent {
-  displayedColumns: string[] = ['No', 'Nombre', 'Símbolo', 'Peso'];
-  dataSource = ELEMENT_DATA;
+  @Input() dataSource!: RandomUserInfo[];
+  @ViewChild(MatTable) table!: MatTable<any>;
+  displayedColumns = ['Image', 'Name', 'Country', 'Age', 'Email'];
+
+  render() {
+    this.table.renderRows();
+  }
 }
